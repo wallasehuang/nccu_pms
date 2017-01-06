@@ -52,7 +52,7 @@ $(document).ready(function() {
         }
     };
     $.ajax({
-        url: "http://nccu.pms/chart/sale",
+        url: "http://localhost:89/chart/sale",
         type: "GET",
         data: {},
         success: function(json) {
