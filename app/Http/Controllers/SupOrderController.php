@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\sOrder;
+use App\SOrder;
 use View;
 
 class SupOrderController extends Controller

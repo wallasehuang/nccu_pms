@@ -65,7 +65,7 @@ class ProductController extends Controller
             'quantity'        => 10,
             'period'          => $data['period'],
             'img_url'         => $img_url,
-            'safety_stock'    => rand(10, 22),
+            'safty_stock'     => rand(10, 22),
             'demand_quantity' => rand(20, 44),
 
         ]);

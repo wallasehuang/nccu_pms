@@ -13,7 +13,7 @@
 
 Route::group(array('prefix' => 'web'), function () {
     # shop web home page
-    Route::get('/', 'shopWeb\ShopWebController@index');
+    Route::get('/', 'ShopWeb\ShopWebController@index');
 
     # customer register and login and logout
     Route::get('/register', 'ShopWeb\RegisterController@index');
