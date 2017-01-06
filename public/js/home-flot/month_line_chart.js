@@ -52,7 +52,7 @@ $(document).ready(function() {
         }
     };
     $.ajax({
-        url: "http://localhost:89/chart/sale",
+        url: "/chart/sale",
         type: "GET",
         data: {},
         success: function(json) {
