@@ -16,7 +16,7 @@ class SupOrderController extends Controller
     public function index()
     {
         $this->index_fun();
-        $sup_order = SOrder::all();
+        $sup_order = SOrder::all()->sortByDesc('created_at');
         return view('sup_order.list')->withSupOrder($sup_order);
     }
 
