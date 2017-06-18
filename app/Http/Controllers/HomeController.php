@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\COrder;
 use App\SOrder;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,9 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $month_corder = COrder::where(DB::raw('YEAR(created_at)'), date('Y'))->where(DB::raw('MONTH(created_at)'), date('n'))->get();
-        $month_sorder = SOrder::where(DB::raw('YEAR(created_at)'), date('Y'))->where(DB::raw('MONTH(created_at)'), date('n'))->get();
-        $month_sale   = 0;
+        $month_corder = COrder::whereYear('created_at', '=', date('Y'))
+            ->whereMonth('created_at', '=', date('n'))
+            ->get();
+        $month_sorder = SOrder::whereYear('created_at', '=', date('Y'))
+            ->whereMonth('created_at', '=', date('n'))
+            ->get();
+        $month_sale = 0;
         if (!is_null($month_corder)) {
             foreach ($month_corder as $order) {
                 $month_sale += $order->quantity * $order->product->price;
@@ -48,7 +51,9 @@ class HomeController extends Controller
         $result = [];
         for ($i = 1; $i <= 12; $i++) {
             // $orders_this_month = Order::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get();
-            $month_order = COrder::where(DB::raw('YEAR(created_at)'), 2017)->where(DB::raw('MONTH(created_at)'), $i)->get();
+            $month_order = COrder::whereYear('created_at', '=', date('Y'))
+                ->whereMonth('created_at', '=', $i)
+                ->get();
             if (is_null($month_order)) {
                 $result[] = [$i, 0];
                 continue;
